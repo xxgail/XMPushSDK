@@ -14,13 +14,15 @@ package XMPushSDK
 //  Fields					map[string]interface{}  //含有本条消息所有属性的数组
 //	JsonInfos				map[string]interface{}
 //}
+type Fields map[string]interface{}
 
 type Message struct {
-	Fields map[string]interface{} //含有本条消息所有属性的数组
+	Fields Fields //含有本条消息所有属性的数组
 }
 
 func InitMessage(title string, desc string, restrictedPackageName string, payloadStr string, passThrough string) *Message {
-	fields := map[string]interface{}{
+	var fields Fields
+	fields = map[string]interface{}{
 		"registration_id":         "",
 		"title":                   title,
 		"description":             desc,
